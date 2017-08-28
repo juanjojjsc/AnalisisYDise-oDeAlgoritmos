@@ -11,45 +11,42 @@
 
 using namespace std;
 
-void MaxHeapify(int a[], int i, int n)
+void maxHeap(int a[], int i, int n)
 {
-    int j, temp;
-    temp = a[i];
-    j = 2*i;
-    
-    while (j <= n)
+    int l,r,largest,loc;
+    l=2*i;
+    r=(2*i+1);
+    if((l<=n)&&a[l]>a[i])
+        largest=l;
+    else
+        largest=i;
+    if((r<=n)&&(a[r]>a[largest]))
+        largest=r;
+    if(largest!=i)
     {
-        if (j < n && a[j+1] > a[j])
-            j = j+1;
-        // Break if parent value is already greater than child value.
-        if (temp > a[j])
-            break;
-        // Switching value with the parent node if temp < a[j].
-        else if (temp <= a[j])
-        {
-            a[j/2] = a[j];
-            j = 2*j;
-        }
+        loc=a[i];
+        a[i]=a[largest];
+        a[largest]=loc;
+        maxHeap(a, largest,n);
     }
-    a[j/2] = temp;
-    return;
+}
+void bmaxHeap(int a[], int n)
+{
+    for(int k = n/2; k >= 1; k--)
+    {
+        maxHeap(a, k, n);
+    }
 }
 void heapSort(int a[], int n)
 {
+    
+    bmaxHeap(a,n);
     int i, temp;
     for (i = n; i >= 2; i--)
     {
-        // Storing maximum value at the end.
         temp = a[i];
         a[i] = a[1];
         a[1] = temp;
-        // Building max heap of remaining element.
-        MaxHeapify(a, 1, i - 1);
+        maxHeap(a, 1, i - 1);
     }
-}
-void Build_MaxHeap(int a[], int n)
-{
-    int i;
-    for(i = n/2; i >= 1; i--)
-        MaxHeapify(a, i, n);
 }

@@ -33,7 +33,7 @@ int main()
     
     int diez[n];
     
-    ifstream fileDiez("/Users/jj/Google Drive/ITC/7mo Semestre/Algoritmos/AnalisisYDisenoDeAlgoritmos/Tarea2_AnalisisDeAlgoritmos/Tarea2_AnalisisDeAlgoritmos/10.txt");
+    ifstream fileDiez("10.txt");
     if(fileDiez.is_open())
     {
         
@@ -51,12 +51,12 @@ int main()
     
     clock_t startTime = clock();
     
-    bubbleSort(diez, n);
+    //bubbleSort(diez, n);
     //quickSort(diez, 0, n-1);
     //selectionSort(diez, n);
     //insertionSort(diez, n);
     //mergeSort(diez, 0, n-1);
-    //heapSort(diez, n);
+    heapSort(diez, n);
     //cocktailSort(diez, n);
     //bucketSort(diez, n);
     //radixSort(diez, n);
@@ -69,6 +69,8 @@ int main()
     
     cout<<"T-10: "<< duration/1000 <<" ms"<<endl;
     
+        for(i=0;i<n;++i)
+            cout<<" "<<diez[i];
     
     
     
@@ -77,7 +79,7 @@ int main()
     
     n = 100;
     int cien[n];
-    ifstream fileCien("/Users/jj/Google Drive/ITC/7mo Semestre/Algoritmos/AnalisisYDisenoDeAlgoritmos/Tarea2_AnalisisDeAlgoritmos/Tarea2_AnalisisDeAlgoritmos/100.txt");
+    ifstream fileCien("100.txt");
     if(fileCien.is_open())
     {
         
@@ -118,7 +120,7 @@ int main()
     
     n = 1000;
     int mil[n];
-    ifstream fileMil("/Users/jj/Google Drive/ITC/7mo Semestre/Algoritmos/AnalisisYDisenoDeAlgoritmos/Tarea2_AnalisisDeAlgoritmos/Tarea2_AnalisisDeAlgoritmos/1000.txt");
+    ifstream fileMil("1000.txt");
     if(fileMil.is_open())
     {
         
@@ -159,7 +161,7 @@ int main()
     
     n = 10000;
     int diezMil[n];
-    ifstream fileDiezMil("/Users/jj/Google Drive/ITC/7mo Semestre/Algoritmos/AnalisisYDisenoDeAlgoritmos/Tarea2_AnalisisDeAlgoritmos/Tarea2_AnalisisDeAlgoritmos/10000.txt");
+    ifstream fileDiezMil("10000.txt");
     if(fileDiezMil.is_open())
     {
         
@@ -196,7 +198,7 @@ int main()
     
     n = 100000;
     int cienMil[n];
-    ifstream fileCienMil("/Users/jj/Google Drive/ITC/7mo Semestre/Algoritmos/AnalisisYDisenoDeAlgoritmos/Tarea2_AnalisisDeAlgoritmos/Tarea2_AnalisisDeAlgoritmos/100000.txt");
+    ifstream fileCienMil("100000.txt");
     if(fileCienMil.is_open())
     {
         
