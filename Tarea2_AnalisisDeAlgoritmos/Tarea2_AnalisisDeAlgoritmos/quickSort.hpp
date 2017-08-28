@@ -10,8 +10,8 @@
 #define quickSort_hpp
 
 
-void quickSort(int[],int,int);
+int partition(int *array, int lo, int hi);
 
-int partition(int[],int,int);
+void quickSort(int *array, int lo, int hi);
 
 #endif /* quickSort_hpp */

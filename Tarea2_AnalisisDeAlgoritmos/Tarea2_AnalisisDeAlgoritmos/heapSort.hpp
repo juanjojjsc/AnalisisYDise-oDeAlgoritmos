@@ -9,10 +9,10 @@
 #ifndef heapSort_hpp
 #define heapSort_hpp
 
-void maxHeapify(int a[], int i, int n);
-
-void buildMaxHeap(int a[], int n);
+void MaxHeapify(int a[], int i, int n);
 
 void heapSort(int a[], int n);
+
+void Build_MaxHeap(int a[], int n);
 
 #endif /* heapSort_hpp */

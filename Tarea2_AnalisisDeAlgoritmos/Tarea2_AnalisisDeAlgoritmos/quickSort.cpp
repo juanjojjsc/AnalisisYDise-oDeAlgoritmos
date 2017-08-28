@@ -8,46 +8,55 @@
 
 #include "quickSort.hpp"
 
-int partition(int a[],int l,int u)
-{
-    int v,i,j,temp;
-    v=a[l];
-    i=l;
-    j=u+1;
+int partition(int *array, int lo, int hi) {
+    int i,j;
+    int v;
+    int temp;
     
-    do
-    {
-        do
+    v = array[lo];
+    i = lo;
+    j = hi;
+    
+    // Mientras no se cruzen los índices
+    while (i < j) {
+        while ((i < j) && (array[i] <= v)) {
             i++;
-        
-        while(a[i]<v&&i<=u);
-        
-        do
-            j--;
-        while(v<a[j]);
-        
-        if(i<j)
-        {
-            temp=a[i];
-            a[i]=a[j];
-            a[j]=temp;
         }
-    }while(i<j);
+        
+        while (array[j] > v) {
+            j--;
+        }
+        // Si todavía no se cruzan los indices seguimos intercambiando
+        if (i < j) {
+            temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
+    }
     
-    a[l]=a[j];
-    a[j]=v;
-    
-    return(j);
+    // Los índices ya se han cruzado, ponemos el pivot en el lugar que le corresponde
+    temp = array[j];
+    array[j] = array[lo];
+    array[lo] = temp;
+    // La nueva posición del pivot
+    return j;
 }
 
-void quickSort(int a[],int l,int u)
+
+// Función recursiva para hacer el ordenamiento
+void quickSort(int *array, int lo, int hi)
 {
-    int j;
-    if(l<u)
-    {
-        j=partition(a,l,u);
-        quickSort(a,l,j-1);
-        quickSort(a,j+1,u);
+    
+    int pivot;
+    
+    if (lo < hi) {
+        pivot = partition(array, lo, hi);
+        
+        // Ordeno la lista de los menores
+        quickSort(array, lo, pivot - 1);
+        
+        // Ordeno la lista de los mayores
+        quickSort(array, pivot + 1, hi);
     }
 }
 
